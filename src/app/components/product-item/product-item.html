@@ -1,0 +1,14 @@
+<div class="product-item">
+  <img [src]="product.url" [alt]="product.name" class="product-image">
+  <div class="product-info">
+    <h3>{{ product.name }}</h3>
+    <p class="product-price">${{ product.price }}</p>
+    <p class="product-description">{{ product.description }}</p>
+    <div class="product-actions">
+      <input type="number" min="1" [(ngModel)]="quantity" (ngModelChange)="onQuantityChange()" class="quantity-input">
+      <button (click)="onAddToCart()" class="add-to-cart-btn">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

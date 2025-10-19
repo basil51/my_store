@@ -1,0 +1,21 @@
+<div class="product-list">
+  <h2>Products</h2>
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <a [routerLink]="['/product', product.id]">
+        <img [src]="product.url" [alt]="product.name" class="product-image">
+      </a>
+      <div class="product-info">
+        <h3><a [routerLink]="['/product', product.id]">{{ product.name }}</a></h3>
+        <p class="product-price">${{ product.price }}</p>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-actions">
+          <input type="number" min="1" value="1" #quantityInput class="quantity-input">
+          <button (click)="addToCart(product, +quantityInput.value)" class="add-to-cart-btn">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

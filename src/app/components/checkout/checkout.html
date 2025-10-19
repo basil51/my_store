@@ -1,0 +1,81 @@
+<div class="checkout">
+  <h2>Checkout</h2>
+  
+  <div class="checkout-content">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div *ngFor="let item of cartItems" class="order-item">
+        <span>{{ item.product.name }} x{{ item.quantity }}</span>
+        <span>${{ (item.product.price * item.quantity).toFixed(2) }}</span>
+      </div>
+      <div class="order-total">
+        <strong>Total: ${{ totalPrice.toFixed(2) }}</strong>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="checkout-form">
+      <h3>Customer Information</h3>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input 
+          type="text" 
+          id="fullName" 
+          [(ngModel)]="fullName" 
+          (ngModelChange)="onFormChange()"
+          name="fullName"
+          required
+          minlength="3"
+          class="form-input"
+        >
+        <div *ngIf="fullName.length < 3 && fullName.length > 0" class="error-message">
+          Full name must be at least 3 characters long.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input 
+          type="text" 
+          id="address" 
+          [(ngModel)]="address" 
+          (ngModelChange)="onFormChange()"
+          name="address"
+          required
+          minlength="6"
+          class="form-input"
+        >
+        <div *ngIf="address.length < 6 && address.length > 0" class="error-message">
+          Address must be at least 6 characters long.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="creditCardNumber">Credit Card Number:</label>
+        <input 
+          type="text" 
+          id="creditCardNumber" 
+          [(ngModel)]="creditCardNumber" 
+          (ngModelChange)="onFormChange()"
+          name="creditCardNumber"
+          required
+          minlength="16"
+          maxlength="19"
+          placeholder="1234 5678 9012 3456"
+          class="form-input"
+        >
+        <div *ngIf="creditCardNumber.length < 16 && creditCardNumber.length > 0" class="error-message">
+          Credit card number must be at least 16 digits.
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        [disabled]="!isFormValid()" 
+        class="submit-btn"
+      >
+        Complete Purchase
+      </button>
+    </form>
+  </div>
+</div>

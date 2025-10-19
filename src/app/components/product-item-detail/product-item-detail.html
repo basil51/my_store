@@ -1,0 +1,24 @@
+<div class="product-detail" *ngIf="product">
+  <button (click)="goBack()" class="back-btn">← Back to Products</button>
+  
+  <div class="product-detail-content">
+    <img [src]="product.url" [alt]="product.name" class="product-detail-image">
+    
+    <div class="product-detail-info">
+      <h1>{{ product.name }}</h1>
+      <p class="product-detail-price">${{ product.price }}</p>
+      <p class="product-detail-description">{{ product.description }}</p>
+      
+      <div class="product-detail-actions">
+        <input type="number" min="1" [(ngModel)]="quantity" class="quantity-input">
+        <button (click)="addToCart()" class="add-to-cart-btn">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!product" class="loading">
+  <p>Loading product details...</p>
+</div>

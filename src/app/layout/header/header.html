@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="header-content">
+    <h1 class="logo">
+      <a routerLink="/">MyStore</a>
+    </h1>
+    
+    <nav class="navigation">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Products
+      </a>
+      <a routerLink="/cart" routerLinkActive="active">
+        Cart ({{ cartItemCount }})
+      </a>
+    </nav>
+  </div>
+</header>
