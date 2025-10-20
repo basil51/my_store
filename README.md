@@ -55,8 +55,10 @@ src/
 │   │   └── header/         # Navigation header component
 │   ├── models/             # TypeScript interfaces
 │   ├── services/           # Angular services
+│   └── assets/             # Application assets
+├── public/
 │   └── assets/
-│       └── data.json       # Product data
+│       └── data.json       # Product data (external API)
 ```
 
 ## Technologies Used
