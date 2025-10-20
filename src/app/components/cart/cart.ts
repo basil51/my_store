@@ -28,13 +28,29 @@ export class CartComponent implements OnInit {
   }
 
   updateQuantity(productId: number, quantity: number): void {
+    // Find the product name before updating
+    const item = this.cartItems.find(item => item.product.id === productId);
+    const productName = item ? item.product.name : 'Item';
+    
     this.cartService.updateQuantity(productId, quantity);
     this.totalPrice = this.cartService.getTotalPrice();
+    
+    // Provide feedback if item was removed (quantity set to 0)
+    if (quantity <= 0) {
+      alert(`${productName} removed from cart!`);
+    }
   }
 
   removeItem(productId: number): void {
+    // Find the product name before removing
+    const item = this.cartItems.find(item => item.product.id === productId);
+    const productName = item ? item.product.name : 'Item';
+    
     this.cartService.removeFromCart(productId);
     this.totalPrice = this.cartService.getTotalPrice();
+    
+    // Provide feedback to user
+    alert(`${productName} removed from cart!`);
   }
 
   proceedToCheckout(): void {

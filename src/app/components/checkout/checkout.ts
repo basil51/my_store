@@ -53,6 +53,12 @@ export class CheckoutComponent implements OnInit {
     // Can be used for real-time validation or other form handling
   }
 
+  onCreditCardChange(event: any): void {
+    // Remove any non-numeric characters
+    const value = event.target.value.replace(/\D/g, '');
+    this.creditCardNumber = value;
+  }
+
   isFormValid(): boolean {
     return this.fullName.length >= 3 && 
            this.address.length >= 6 && 
